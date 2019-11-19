@@ -1,3 +1,6 @@
+
+//next class you planned to create code for updating the game to game state. (optional put an image outside of the box.)
+
 //This class sets up the window and the floor of the game.
 import javax.swing.JFrame;
 
@@ -5,8 +8,8 @@ public class Game {
 	//member variables
 	JFrame frame;
 	GamePanel GP;
-int height = 500;
-int width=800; 
+public static int HEIGHT = 500;
+public static int WIDTH=800; 
 
 //------------------------------------ Constructor & main method
 Game(){
@@ -26,7 +29,7 @@ public static void main(String[] args) {
 
 void window() {
 	frame.add(GP);
-	frame.setSize(width, height);
+	frame.setSize(WIDTH, HEIGHT);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	//frame.addKeyListener(GP);
 	frame.setVisible(true);
