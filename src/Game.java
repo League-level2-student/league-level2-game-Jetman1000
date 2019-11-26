@@ -1,5 +1,5 @@
 
-//next class you planned to create code for updating the game to game state. (optional put an image outside of the box.)
+//next class you planned to create code for updating the dinosaur's jumping and drawing, you recently added another class called "GameObject"
 
 //This class sets up the window and the floor of the game.
 import javax.swing.JFrame;
@@ -31,7 +31,7 @@ void window() {
 	frame.add(GP);
 	frame.setSize(WIDTH, HEIGHT);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//frame.addKeyListener(GP);
+	frame.addKeyListener(GP);
 	frame.setVisible(true);
 }
 

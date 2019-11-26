@@ -3,12 +3,14 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 //This class is responsible for the collision, interaction, game obstacles, and function of the game.
-public class GamePanel extends JPanel implements ActionListener{
+public class GamePanel extends JPanel implements ActionListener, KeyListener{
 //member variables
 	Font titleFont;
 	Timer frameDraw;
@@ -17,6 +19,8 @@ public class GamePanel extends JPanel implements ActionListener{
 	final int END = 2;
 	
 	int currentState= MENU;
+	
+	
 	
 //-----------------------------	Constructor
 	GamePanel(){
@@ -68,12 +72,18 @@ public class GamePanel extends JPanel implements ActionListener{
 	
 	//-------
 	void drawGameState(Graphics g) {
+		g.setColor(Color.LIGHT_GRAY);
+		g.fillRect(0,0, Game.WIDTH, Game.HEIGHT);
 		
+		//drawing the line on the floor
+		g.setColor(Color.BLACK);
+		g.drawLine(0,400,800,400);
 	}
 	
 	//-------
 	void drawEndState(Graphics g) {
-		
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 	}
 
 	
@@ -91,7 +101,39 @@ public class GamePanel extends JPanel implements ActionListener{
 			updateEndState();
 		}
 		repaint();
+	}
+//_____________________________________________
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	//_________________________________________
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
+			currentState++;
+			
+			//System.out.println("qwertyuio");
+		}
+		if(currentState>END) {
+			currentState=MENU;
+		}
+		
+	}
+
+	
+	//___________________________________________
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}	
+	
+	
 	
 	
 		
