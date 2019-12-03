@@ -18,10 +18,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int GAME = 1;
 	final int END = 2;
 	
+	
 	int currentState= MENU;
 	
-	
-	
+dinosaur dino= new dinosaur (100, 350 , 50, 50);
+	ObjectManager OM=new ObjectManager(dino);
+
+
 //-----------------------------	Constructor
 	GamePanel(){
 		
@@ -37,7 +40,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	void updateGameState() {
-		
+		OM.update();
 	}
 	void updateEndState() {
 		
@@ -51,6 +54,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 					drawStartState(g);
 				} else if (currentState == GAME) {
 					drawGameState(g);
+					
 				} else if (currentState == END) {
 					drawEndState(g);
 				}
@@ -77,7 +81,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 		//drawing the line on the floor
 		g.setColor(Color.BLACK);
-		g.drawLine(0,400,800,400);
+		g.drawLine(0,400,800,Game.gHeight);
+		
+		//drawing the dinosaur
+		OM.draw(g);
+		
 	}
 	
 	//-------
@@ -114,7 +122,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
+		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
 			currentState++;
 			
 			//System.out.println("qwertyuio");
@@ -122,7 +130,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if(currentState>END) {
 			currentState=MENU;
 		}
-		
+		if(e.getKeyCode() == KeyEvent.VK_SPACE && currentState == GAME) {
+			dino.jump();
+		}
 	}
 
 	
