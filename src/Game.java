@@ -1,5 +1,5 @@
 
-//next class you planned to create code for fixing the dinosaur jumping so that it wouldn't be able to jump multiple times
+//You have created another class to make obstacles. Your goal is now to make them print, iterate, and make code to update them. (sorry a little mixed up.)
 
 //This class sets up the window and the floor of the game.
 import javax.swing.JFrame;

@@ -4,11 +4,14 @@ import java.awt.Graphics;
 public class ObjectManager {
 	//member variables 
 dinosaur dino;
+Obstacle ob;
+
 
 
 //--------------------------------constructor
 ObjectManager(dinosaur dino){
 	this.dino=dino;
+	this.ob=ob;
 }
 
 
@@ -16,12 +19,14 @@ ObjectManager(dinosaur dino){
 //this method uses the draw method from the dinosaur class and calls it
 void draw(Graphics g) {
 	dino.draw(g);
+	ob.draw(g);
 
 }
 
 //this method uses the update method from the dinosaur class and calls it
 void update() {
 	dino.update();
+	ob.update();
 }
 
 

@@ -127,12 +127,14 @@ dinosaur dino= new dinosaur (100, 350 , 50, 50);
 			
 			//System.out.println("qwertyuio");
 		}
+		
 		if(currentState>END) {
 			currentState=MENU;
 		}
 		if(e.getKeyCode() == KeyEvent.VK_SPACE && currentState == GAME) {
 			dino.jump();
 		}
+		
 	}
 
 	

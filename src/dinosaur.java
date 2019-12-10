@@ -6,6 +6,7 @@ public class dinosaur extends GameObject{
 	int dinoVelo= 0;
 	int gravity=1;
 	
+	
 	boolean jump= false;
 	
 	//-------------------------constructor
@@ -23,7 +24,9 @@ public class dinosaur extends GameObject{
 		y+=dinoVelo;
 		if(y>Game.gHeight-height) {
 			y=Game.gHeight-height;
+			jump =true;
 		}
+	
 //		
 	}
 	
@@ -37,8 +40,11 @@ public class dinosaur extends GameObject{
 	 //method for code for making the dinosaur jump
 	
 	void jump() {
-		dinoVelo = -15;
 		
+		
+		if(y == Game.gHeight-height) {
+			dinoVelo = -15;
+		}
 	}
 	
 	
