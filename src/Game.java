@@ -1,5 +1,5 @@
 
-//You have created another class to make obstacles. Your goal is now to make them print, iterate, and make code to update them. (sorry a little mixed up.)
+//For the next class, create code to fix obstacle updates and drawings
 
 //This class sets up the window and the floor of the game.
 import javax.swing.JFrame;

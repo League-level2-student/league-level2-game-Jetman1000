@@ -30,7 +30,7 @@ dinosaur dino= new dinosaur (100, 350 , 50, 50);
 		
 		frameDraw = new Timer(1000 / 60, this);
 		frameDraw.start();
-		
+		OM.startGame();
 	}
 	
 //----------------------------- methods
@@ -41,6 +41,7 @@ dinosaur dino= new dinosaur (100, 350 , 50, 50);
 	}
 	void updateGameState() {
 		OM.update();
+		
 	}
 	void updateEndState() {
 		

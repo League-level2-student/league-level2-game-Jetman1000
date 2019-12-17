@@ -6,8 +6,7 @@ public class GameObject {
 	int width;
 	int height;
 	
-	int oHeight;
-	
+
 //-----------------------constructor	
 	
 	GameObject(int x, int y, int width, int height){
@@ -16,7 +15,7 @@ public class GameObject {
 		this.width=width;
 		this.height=height;
 		
-		this.oHeight=oHeight;
+		
 	}
 	
 	
