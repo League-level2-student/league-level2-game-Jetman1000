@@ -6,7 +6,7 @@ public class dinosaur extends GameObject{
 	int dinoVelo= 0;
 	int gravity=1;
 	
-	
+	boolean ducking=false;
 	boolean jump= false;
 	
 	//-------------------------constructor
@@ -38,7 +38,6 @@ public class dinosaur extends GameObject{
 
 	
 	 //method for code for making the dinosaur jump
-	
 	void jump() {
 		
 		
@@ -46,6 +45,17 @@ public class dinosaur extends GameObject{
 			dinoVelo = -15;
 		}
 	}
+	
+	//method for code that will make the dinosaur duck
+		void duck() {
+			ducking=true;
+			
+			if(ducking==true) {
+					height= height/2;
+			}
+		}
+	
+	
 	
 	
 }

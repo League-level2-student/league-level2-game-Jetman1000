@@ -18,10 +18,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int GAME = 1;
 	final int END = 2;
 	
+	int DINOheight = 50;
 	
 	int currentState= MENU;
 	
-dinosaur dino= new dinosaur (100, 350 , 50, 50);
+dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 	ObjectManager OM=new ObjectManager(dino);
 
 
@@ -136,6 +137,8 @@ dinosaur dino= new dinosaur (100, 350 , 50, 50);
 			dino.jump();
 		}
 		
+		
+		
 	}
 
 	
@@ -143,6 +146,7 @@ dinosaur dino= new dinosaur (100, 350 , 50, 50);
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
 		
 	}	
 	

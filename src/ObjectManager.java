@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.Timer;
 
@@ -12,11 +13,12 @@ public class ObjectManager implements ActionListener{
 dinosaur dino;
 Timer ObstacleSpawn;
 ArrayList<Obstacle> OB =new ArrayList<Obstacle>();
+Random random=new Random(); 
 
 //--------------------------------constructor
 ObjectManager(dinosaur dino){
 	this.dino=dino;
-	
+
 }
 
 
@@ -34,6 +36,8 @@ void draw(Graphics g) {
 	
 }
 
+
+
 //this method uses the update method from the dinosaur class and iterates through all obstacles
 void update() {
 	
@@ -47,15 +51,20 @@ for(int i=0; i<OB.size(); i++) {
 }
 
 //this method iterates, sets a timer for the spawning of the obstacles, and "starts" the game for the obstacles
-   void startGame() {
-ObstacleSpawn = new Timer(1000, this);
+   void startGame() {   
+	    
+ObstacleSpawn = new Timer(random.nextInt(1001)+1001, this);
    ObstacleSpawn.start();
    }
 
+   
+   
+   
+   
 //this method adds the obstacles 
 void addObstacles(){
-	OB.add(new Obstacle(400, 350, 25, 25 ));
-	System.out.println("adfDFADFAFADFADFA");
+	OB.add(new Obstacle(800, 375, 25, 25 ));
+	
 }
 
 
@@ -70,6 +79,8 @@ void addObstacles(){
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	addObstacles();
+ ObstacleSpawn.setDelay(random.nextInt(1501)+1001);
+
 }
 
 

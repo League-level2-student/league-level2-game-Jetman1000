@@ -1,5 +1,5 @@
 
-//For the next class, create code to fix obstacle updates and drawings
+//For the next class, create code to make the dinosaur duck (properly) and update the collision between the dinosaur & obstacle
 
 //This class sets up the window and the floor of the game.
 import javax.swing.JFrame;
