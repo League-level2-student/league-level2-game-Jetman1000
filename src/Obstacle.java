@@ -24,6 +24,8 @@ public class Obstacle extends GameObject {
 	
 //this method is supposed to make the obstacle move from right to left
 	void update() {
+		
+		super.update();
 		x-=5;
 		
 	}

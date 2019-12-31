@@ -43,6 +43,10 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 	void updateGameState() {
 		OM.update();
 		
+		if(dino.isActive==false) {
+			currentState=END;
+		}
+		 
 	}
 	void updateEndState() {
 		
@@ -72,8 +76,8 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		g.setColor(Color.white);
 		g.drawString("Dinosuar Game", 350, 180);
 		g.drawString("How to Play", 359, 250);
-		g.drawString("Press Space/UP arrow = JUMP", 306,290);
-		g.drawString("Press DOWN arrow = CROUCH", 303, 330);
+		g.drawString("Press Space to JUMP", 330,290);
+		//g.drawString("Press DOWN arrow = CROUCH", 303, 330);
 	}
 	
 	//-------
@@ -81,9 +85,13 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(0,0, Game.WIDTH, Game.HEIGHT);
 		
+		
 		//drawing the line on the floor
 		g.setColor(Color.BLACK);
 		g.drawLine(0,400,800,Game.gHeight);
+		
+		//drawing the scoreboard                          **********
+		g.drawString("sd;lfajdk",400,250);
 		
 		//drawing the dinosaur
 		OM.draw(g);

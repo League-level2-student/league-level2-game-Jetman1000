@@ -15,6 +15,8 @@ Timer ObstacleSpawn;
 ArrayList<Obstacle> OB =new ArrayList<Obstacle>();
 Random random=new Random(); 
 
+int score=0;
+
 //--------------------------------constructor
 ObjectManager(dinosaur dino){
 	this.dino=dino;
@@ -47,6 +49,7 @@ void update() {
 for(int i=0; i<OB.size(); i++) {
 	Obstacle O= OB.get(i);
 	O.update();
+	checkCollision();
 	}
 }
 
@@ -68,10 +71,22 @@ void addObstacles(){
 }
 
 
+//this method checks the collision of the obstacles to the dinosaur
+void checkCollision() {
+	for(int i=0; i<OB.size(); i++) {
+		Obstacle o= OB.get(i);
+		if(o.collisionBox.intersects(dino.collisionBox)) {
+			o.isActive=false;
+			dino.isActive=false;
+		}
+		
+	}
+}
 
 
-
-
+public int getScore() {
+	return score;
+}
 
 
 
