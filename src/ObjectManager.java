@@ -11,11 +11,14 @@ import javax.swing.Timer;
 public class ObjectManager implements ActionListener{
 	//member variables 
 dinosaur dino;
+
 Timer ObstacleSpawn;
+
+
 ArrayList<Obstacle> OB =new ArrayList<Obstacle>();
 Random random=new Random(); 
 
-int score=0;
+
 
 //--------------------------------constructor
 ObjectManager(dinosaur dino){
@@ -60,8 +63,7 @@ ObstacleSpawn = new Timer(random.nextInt(1001)+1001, this);
    ObstacleSpawn.start();
    }
 
-   
-   
+  
    
    
 //this method adds the obstacles 
@@ -84,9 +86,7 @@ void checkCollision() {
 }
 
 
-public int getScore() {
-	return score;
-}
+
 
 
 
@@ -96,6 +96,11 @@ public void actionPerformed(ActionEvent e) {
 	addObstacles();
  ObstacleSpawn.setDelay(random.nextInt(1501)+1001);
 
+ 
+
+ 
+ 
+ 
 }
 
 

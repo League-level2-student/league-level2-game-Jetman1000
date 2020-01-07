@@ -13,15 +13,16 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 //member variables
 	Font titleFont;
+	Timer scoreMeasure;
 	Timer frameDraw;
 	final int MENU = 0;
 	final int GAME = 1;
 	final int END = 2;
 	
 	int DINOheight = 50;
-	
+	int score=0;
 	int currentState= MENU;
-	
+	int n=60;
 dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 	ObjectManager OM=new ObjectManager(dino);
 
@@ -29,9 +30,13 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 //-----------------------------	Constructor
 	GamePanel(){
 		
-		frameDraw = new Timer(1000 / 60, this);
+		scoreMeasure = new Timer (1000/10,this);
+		scoreMeasure.start();
+		
+		frameDraw = new Timer(1000 / n, this);
 		frameDraw.start();
 		OM.startGame();
+		
 	}
 	
 //----------------------------- methods
@@ -91,7 +96,7 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		g.drawLine(0,400,800,Game.gHeight);
 		
 		//drawing the scoreboard                          **********
-		g.drawString("sd;lfajdk",400,250);
+		g.drawString("Score: "+getScore(),400,250);
 		
 		//drawing the dinosaur
 		OM.draw(g);
@@ -105,20 +110,40 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 	}
 
 	
+	public int getScore() {
+		return score;
+	}
+	
+	
+	
+	
 	//allows for methods to be called
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getSource() == frameDraw) {
 		if(currentState==MENU) {
 			
 			updateStartState();
 		}else if (currentState==GAME) {
 			updateGameState();
+	
 		}else if(currentState==END) {
 			updateEndState();
 		}
 		repaint();
+		}
+		
+		if(e.getSource()==scoreMeasure) {
+			score++;
+		}
+		
+		
+		if(e.getSource() == scoreMeasure) {
+			if(score == 100) {
+				n+=10;
+			}
+		}
 	}
 //_____________________________________________
 	@Override

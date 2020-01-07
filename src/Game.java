@@ -1,5 +1,6 @@
 
-//For the next class, create code to make a scoreboard to measure the distance and increase speed
+//For the next class, create code to make it so that when the score is like 100, 200, 300, and etc. speed increases. Also create code
+//for the Ending State of the Game
 
 //This class sets up the window and the floor of the game.
 import javax.swing.JFrame;
