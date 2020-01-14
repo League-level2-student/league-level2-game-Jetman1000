@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	int DINOheight = 50;
 	int score=0;
 	int currentState= MENU;
-	int n=60;
+	int speed=70;
 dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 	ObjectManager OM=new ObjectManager(dino);
 
@@ -33,7 +33,7 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		scoreMeasure = new Timer (1000/10,this);
 		scoreMeasure.start();
 		
-		frameDraw = new Timer(1000 / n, this);
+		frameDraw = new Timer(1000 / speed, this);
 		frameDraw.start();
 		OM.startGame();
 		
@@ -48,8 +48,11 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 	void updateGameState() {
 		OM.update();
 		
+		
 		if(dino.isActive==false) {
-			currentState=END;
+			currentState++;
+			scoreMeasure.stop();
+			//frameDraw.stop();
 		}
 		 
 	}
@@ -65,6 +68,8 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 					drawStartState(g);
 				} else if (currentState == GAME) {
 					drawGameState(g);
+					
+					
 					
 				} else if (currentState == END) {
 					drawEndState(g);
@@ -96,7 +101,7 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		g.drawLine(0,400,800,Game.gHeight);
 		
 		//drawing the scoreboard                          **********
-		g.drawString("Score: "+getScore(),400,250);
+		g.drawString("Score: "+getScore(),375,250);
 		
 		//drawing the dinosaur
 		OM.draw(g);
@@ -105,8 +110,12 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 	
 	//-------
 	void drawEndState(Graphics g) {
-		g.setColor(Color.RED);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+		
+		g.setColor(Color.RED);
+		g.drawString("YOU DIED", 375, 250);
+		g.drawString("Your score was " + score, 340, 300);
 	}
 
 	
@@ -140,10 +149,16 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		
 		
 		if(e.getSource() == scoreMeasure) {
-			if(score == 100) {
-				n+=10;
+			if( score % 100==0) {
+				System.out.println(speed);
+				speed+=20;
 			}
+			
+			
 		}
+	
+	
+	
 	}
 //_____________________________________________
 	@Override
@@ -159,13 +174,34 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		// TODO Auto-generated method stub
 		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
 			currentState++;
-			
+			System.out.println(currentState);
 			//System.out.println("qwertyuio");
 		}
+		 
+		if(e.getKeyCode()==KeyEvent.VK_ENTER&&currentState==END) {
+			currentState = MENU;
+			//score = 0;
+		}
+		
 		
 		if(currentState>END) {
 			currentState=MENU;
+			
 		}
+		
+		if(currentState == MENU) {
+			OM.reset();
+		}else if(currentState==GAME) {
+			OM.startGame();
+			
+			dino.isActive=true;
+			dino.x=100;
+			dino.y=350;
+			
+		
+		}
+		
+		
 		if(e.getKeyCode() == KeyEvent.VK_SPACE && currentState == GAME) {
 			dino.jump();
 		}

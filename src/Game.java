@@ -1,6 +1,6 @@
 
-//For the next class, create code to make it so that when the score is like 100, 200, 300, and etc. speed increases. Also create code
-//for the Ending State of the Game
+//For the next class, create code to reset the score back to 0 when the dinosaurs dies and replays. In addition, write code to fix the obstacle spawning.
+
 
 //This class sets up the window and the floor of the game.
 import javax.swing.JFrame;

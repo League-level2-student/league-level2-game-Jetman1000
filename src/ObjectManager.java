@@ -32,7 +32,7 @@ ObjectManager(dinosaur dino){
 //this method uses the draw method from the dinosaur class and iterate/draws all the obstacles
 void draw(Graphics g) {
 	dino.draw(g);
-	System.out.println(OB.size());
+	//System.out.println(OB.size());
 
 	for(int i=0; i<OB.size(); i++) {
 		Obstacle O= OB.get(i);
@@ -70,6 +70,11 @@ ObstacleSpawn = new Timer(random.nextInt(1001)+1001, this);
 void addObstacles(){
 	OB.add(new Obstacle(800, 375, 25, 25 ));
 	
+}
+
+//this method clears all obstacles
+void reset() {
+	OB.clear();
 }
 
 
