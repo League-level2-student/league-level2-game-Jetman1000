@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 //This class is purposed to create the functions and object of the dinosaur.
 public class dinosaur extends GameObject{
@@ -6,12 +7,21 @@ public class dinosaur extends GameObject{
 	int dinoVelo= 0;
 	int gravity=1;
 	
+	public static BufferedImage image;
+	public static boolean needImage = true;
+	public static boolean gotImage = false;
+	
+	
 	//boolean ducking=false;
 	boolean jump= false;
 	
 	//-------------------------constructor
 	dinosaur(int x, int y, int width, int height){
 		super( x, y,  width,  height);
+		if (needImage) {
+		    loadImage ("Dino.png");
+		}
+		
 	}
 	
 	
@@ -24,6 +34,7 @@ public class dinosaur extends GameObject{
 		dinoVelo+=gravity;
 		y+=dinoVelo;
 		if(y>Game.gHeight-height) {
+			System.out.println("jmp");
 			y=Game.gHeight-height;
 			jump =true;
 		}
@@ -33,7 +44,11 @@ public class dinosaur extends GameObject{
 	
 	//method to draw the dinosaur
 	void draw(Graphics g) {
+		if (gotImage) {
+			g.drawImage(image, x, y, width, height, null);
+		}else {
 		g.fillRect(x,y, width, height);
+	}
 	}
 	
 
@@ -42,8 +57,11 @@ public class dinosaur extends GameObject{
 	void jump() {
 		
 		
-		if(y == Game.gHeight-height) {
+		if(jump == true) {
+			
+			
 			dinoVelo = -15;
+			jump=false;
 		}
 	}
 	

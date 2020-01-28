@@ -63,7 +63,9 @@ ObstacleSpawn = new Timer(random.nextInt(1001)+1001, this);
    ObstacleSpawn.start();
    }
 
-  
+  void restart() {
+	  ObstacleSpawn.restart();
+  }
    
    
 //this method adds the obstacles 
@@ -75,6 +77,7 @@ void addObstacles(){
 //this method clears all obstacles
 void reset() {
 	OB.clear();
+	ObstacleSpawn.stop();
 }
 
 

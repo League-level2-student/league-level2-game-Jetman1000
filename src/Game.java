@@ -1,5 +1,5 @@
 
-//For the next class, create code to reset the score back to 0 when the dinosaurs dies and replays. In addition, write code to fix the obstacle spawning.
+//For the next class, create code to add pictures for all objects and FINISH
 
 
 //This class sets up the window and the floor of the game.

@@ -52,7 +52,8 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		if(dino.isActive==false) {
 			currentState++;
 			scoreMeasure.stop();
-			//frameDraw.stop();
+			OM.reset();
+			frameDraw.stop();
 		}
 		 
 	}
@@ -116,6 +117,7 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		g.setColor(Color.RED);
 		g.drawString("YOU DIED", 375, 250);
 		g.drawString("Your score was " + score, 340, 300);
+		g.drawString ("Press ENTER twice to restart",310 ,330);
 	}
 
 	
@@ -174,6 +176,12 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		// TODO Auto-generated method stub
 		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
 			currentState++;
+			if(currentState==GAME) {
+			score=0;
+			frameDraw.start();
+			scoreMeasure.start();
+			OM.restart();
+			}
 			System.out.println(currentState);
 			//System.out.println("qwertyuio");
 		}
@@ -192,11 +200,11 @@ dinosaur dino= new dinosaur (100, 350 , 50, DINOheight);
 		if(currentState == MENU) {
 			OM.reset();
 		}else if(currentState==GAME) {
-			OM.startGame();
+			
 			
 			dino.isActive=true;
-			dino.x=100;
-			dino.y=350;
+			//dino.x=100;
+			//dino.y=350;
 			
 		
 		}
