@@ -1,6 +1,8 @@
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
+
 //This class is purposed to create the functions and object of the dinosaur.
 public class dinosaur extends GameObject{
 //member variables
@@ -65,8 +67,20 @@ public class dinosaur extends GameObject{
 		}
 	}
 	
+	void loadImage(String imageFile) {
+	    if (needImage) {
+	        try {
+	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		    gotImage = true;
+	        } catch (Exception e) {
+	            
+	        }
+	        needImage = false;
+	    }
+	}
 	
 	
 	
 	
 }
+
